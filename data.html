@@ -1,0 +1,33 @@
+// Data to be sent in the POST request (in JSON format) 
+const postData = { 
+  username: 'exampleUser', 
+  email: 'user@example.com'
+}; 
+  
+// POST request options 
+const requestOptions = { 
+  method: 'POST', 
+  headers: { 
+    'Content-Type': 'application/json'
+  }, 
+  body: JSON.stringify(postData) 
+}; 
+  
+// Make the POST request 
+fetch('https://api.example.com/users', requestOptions) 
+  .then(response => { 
+    // Check if the request was successful 
+    if (!response.ok) { 
+      throw new Error('Network response was not ok'); 
+    } 
+    // Parse the JSON response 
+    return response.json(); 
+  }) 
+  .then(data => { 
+    // Handle the data returned from the server 
+    console.log('Post request response:', data); 
+  }) 
+  .catch(error => { 
+    // Handle any errors that occurred during the fetch 
+    console.error('There was a problem with the fetch operation:', error); 
+  }); 
